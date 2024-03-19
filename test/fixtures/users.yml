@@ -18,9 +18,13 @@
 
 user_one:
   email: sivanandam03@gmail.com
+  password: Password@01
+  password_confirmation: Password@01
   password_digest: <%= BCrypt::Password.create('Password@01') %>
 
 
 user_two:
   email: steve@acme.com
+  password: RailsPassword@01
+  password_confirmation: RailsPassword@01
   password_digest: <%= BCrypt::Password.create('RailsPassword@01') %>

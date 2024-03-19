@@ -16,7 +16,7 @@ module Api
     private
 
     def invalid_crendentials
-      render json: { message: 'Invalid crendetials' }, status: :unprocessable_entity
+      render json: { message: 'Invalid credentials' }, status: :unprocessable_entity
     end
 
     def sessions_params
