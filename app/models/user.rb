@@ -24,4 +24,8 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   has_many :tasks, inverse_of: :user, dependent: :destroy
+
+  def jwt_token
+    JsonWebToken.generate(id)
+  end
 end
