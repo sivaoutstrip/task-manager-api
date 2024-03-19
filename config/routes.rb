@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: true } do
     post '/sign-in', to: 'sessions#create'
     post '/sign-up', to: 'registrations#create'
+
+    resources :tasks
   end
 end

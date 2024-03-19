@@ -7,10 +7,10 @@ class ApplicationController < ActionController::API
     user_id = JsonWebToken.decode(request.headers['Authorization'])
     return unauthorized_msg if user_id.nil?
 
-    user = User.find_by(id: user_id)
-    return unauthorized_msg if user.nil?
+    @current_user = User.find_by(id: user_id)
+    return unauthorized_msg if @current_user.nil?
 
-    user
+    @current_user
   end
 
   private
