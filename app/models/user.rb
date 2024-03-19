@@ -22,4 +22,6 @@ class User < ApplicationRecord
                        format: { with: /(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_])/ },
                        if: proc { |a| a.password.present? }
   validates :password_confirmation, presence: true
+
+  has_many :tasks, inverse_of: :user, dependent: :destroy
 end

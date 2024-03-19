@@ -28,7 +28,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should not save record if email is already exist' do
-    @user.email = users(:one).email
+    @user.email = users(:user_one).email
     assert_not @user.save
   end
 

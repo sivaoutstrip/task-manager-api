@@ -16,11 +16,11 @@
 # below each fixture, per the syntax in the comments below
 #
 
-one:
+user_one:
   email: sivanandam03@gmail.com
   password_digest: <%= BCrypt::Password.create('Password@01') %>
 
 
-two:
+user_two:
   email: steve@acme.com
   password_digest: <%= BCrypt::Password.create('RailsPassword@01') %>
