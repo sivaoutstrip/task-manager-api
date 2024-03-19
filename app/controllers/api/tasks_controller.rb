@@ -5,7 +5,8 @@ module Api
     before_action :set_task
 
     def index
-      @tasks = Task.where(user: @current_user).all.order(created_at: :desc)
+      @q = Task.ransack(params[:q])
+      @tasks = @q.result.where(user: @current_user)
       render :index, status: :ok
     end
 
@@ -46,7 +47,7 @@ module Api
       total_tasks = users_tasks.length
       return false if total_tasks <= 5
 
-      todos_count = users_tasks.todo_status_length.to_f
+      todos_count = users_tasks.todo_length.to_f
 
       (todos_count / total_tasks) >= 0.5
     end
@@ -57,6 +58,10 @@ module Api
 
     def tasks_params
       params.permit(:user_id, :title, :description, :status)
+    end
+
+    def ransack_params
+      params.permit(:status_eq)
     end
   end
 end
