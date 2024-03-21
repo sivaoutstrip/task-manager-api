@@ -45,7 +45,7 @@ class Api::RegistrationsControllerTest < ActionDispatch::IntegrationTest
     params = { email: @email, password: @password, password_confirmation: @password }
     post api_sign_up_path(params)
     assert_response :created
-    assert_equal @email, response.parsed_body.dig('data', 'email')
-    assert_not_nil response.parsed_body.dig('data', 'token')
+    assert_equal @email, response.parsed_body.dig('user', 'email')
+    assert_not_nil response.parsed_body['token']
   end
 end

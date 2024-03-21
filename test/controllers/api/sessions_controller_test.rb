@@ -46,8 +46,8 @@ class Api::SessionsControllerTest < ActionDispatch::IntegrationTest
   test 'should return email and token data is credentials are valid' do
     params = { email: users(:user_one).email, password: 'Password@01' }
     post api_sign_in_path(params)
-    assert_equal response.parsed_body['data']['email'], users(:user_one).email
-    assert_not_nil response.parsed_body['data']['token']
+    assert_equal response.parsed_body['user']['email'], users(:user_one).email
+    assert_not_nil response.parsed_body['token']
     assert_response :ok
   end
 end
