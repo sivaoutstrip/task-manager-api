@@ -6,7 +6,7 @@ module Api
 
     def index
       @q = Task.ransack(params[:q])
-      @tasks = @q.result.where(user: @current_user)
+      @tasks = @q.result.where(user: @current_user).order(created_at: :desc)
       render :index, status: :ok
     end
 
