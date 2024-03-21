@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: task_management_api_production
   username: task_management_api
-  password: <%= ENV["TASK_MANAGEMENT_API_DATABASE_PASSWORD"] %>
+  password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
